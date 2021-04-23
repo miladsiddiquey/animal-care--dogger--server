@@ -143,6 +143,18 @@ app.post('/isAdmin',(req, res)=>{
 })
 
 
+//status
+
+app.delete('/updateStatus/:id',(req, res)=>{
+
+  
+  serviceCollection.updateOne({_id:ObjectId(req.params.id)},{
+    $set:{status:req.body.newStatus}
+  })
+.then(result=>{
+  res.send(result.modifiedCount > 0)
+})
+
 
 });
 
